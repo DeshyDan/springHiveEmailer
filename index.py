@@ -7,12 +7,12 @@ import random
 
 from email.header import Header
 from email.mime.text import MIMEText
-#Open a file for reading
 
-me = 'deshy733@gmail.com' # change to your email
-p_reader = open('password.txt', 'rb') # edit for your password
+
+me = 'myemail' 
+p_reader = open('password.txt', 'rb') 
 cipher = p_reader.read()
-recipients = ['SomeEMailHEre'] # enter recipients here
+recipients = ['marchelle.hermanus@sprinthive.com'] 
 
 
 def spamEveryMinute():
@@ -22,13 +22,12 @@ def spamEveryMinute():
         msg['To'] = ', '.join(recipients)
         msg['Subject'] = Header('BTR Giveaway 2024', 'utf-8')
 
-        # Attach the message body
+      
         fp = open('message.txt', 'rb')
         body = MIMEText(fp.read(), 'plain', 'utf-8')
         fp.close()
         msg.attach(body)
 
-        # Attach the PDF file
         filename = 'Resume.pdf'
         attachment = open(filename, 'rb')
         part = MIMEBase('application', 'octet-stream')
@@ -46,6 +45,6 @@ def spamEveryMinute():
 
         print("Email sent to: " + ', '.join(recipients))
         s.quit()
-        time.sleep(60) # change rate of fire here
+        time.sleep(30) #
 
 spamEveryMinute()
